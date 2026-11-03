@@ -7,15 +7,18 @@ A scroll-driven 3D showcase of a Ford Mustang, built with **Next.js** and **Reac
 [![GSAP](https://img.shields.io/badge/GSAP-88CE02?logo=greensock&logoColor=black)](https://gsap.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-![Hero](screenshots/hero.png)
+## Table of Contents
 
-## Preview
-
-| Performance numbers | Design close-up |
-| --- | --- |
-| ![Numbers](screenshots/numbers.png) | ![Design](screenshots/design.png) |
-
-![Finale](screenshots/finale.png)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Using Your Own Model](#using-your-own-model)
+- [Customisation](#customisation)
+- [Performance and Accessibility](#performance-and-accessibility)
+- [Notes](#notes)
+- [License](#license)
+- [Author](#author)
 
 ## Features
 
@@ -30,12 +33,12 @@ A scroll-driven 3D showcase of a Ford Mustang, built with **Next.js** and **Reac
 
 ## Tech Stack
 
-| Layer | Tools |
-| --- | --- |
-| Framework | Next.js, React, TypeScript |
-| 3D | Three.js, React Three Fiber, drei, postprocessing |
-| Animation | GSAP, Lenis |
-| Model | GLB (glTF binary) |
+| Layer     | Tools                                             |
+| --------- | ------------------------------------------------- |
+| Framework | Next.js, React, TypeScript                        |
+| 3D        | Three.js, React Three Fiber, drei, postprocessing |
+| Animation | GSAP, Lenis                                       |
+| Model     | GLB (glTF binary)                                 |
 
 ## Getting Started
 
@@ -50,7 +53,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Production build:
+### Production build
 
 ```bash
 npm run build
@@ -68,10 +71,9 @@ mustang/
 │   └── Site.tsx           # Page sections, UI and cursor
 ├── lib/
 │   └── state.ts           # Shared state and ACC colour for 3D lights
-├── public/
-│   └── models/
-│       └── car.glb        # Mustang model
-└── screenshots/           # README images
+└── public/
+    └── models/
+        └── car.glb        # Mustang model
 ```
 
 ## Using Your Own Model
@@ -80,23 +82,25 @@ mustang/
 
 The scene looks for these names in your model:
 
-| Name | Type | What it does |
-| --- | --- | --- |
-| `paint` | Material | Recoloured by the configurator |
-| `lamp` | Material | Glows through bloom |
-| `wheel0` to `wheel3` | Nodes | Spun by scroll |
+| Name                 | Type     | What it does                   |
+| -------------------- | -------- | ------------------------------ |
+| `paint`              | Material | Recoloured by the configurator |
+| `lamp`               | Material | Glows through bloom            |
+| `wheel0` to `wheel3` | Nodes    | Spun by scroll                 |
 
 Name yours the same, or edit `components/Scene.tsx`. If your model faces a different direction, rotate the `<primitive>` group inside `Car()`.
 
 ## Customisation
 
-**Accent colour**
+### Accent colour
+
 - Change `ACC` in `lib/state.ts` for the 3D lights.
 - Change `--acc` in `app/globals.css` for the UI.
 - The glow hex `#ff2a1a` also appears in `Site.tsx` (cursor hover ring) and the shadow utilities.
 
-**Camera path**
-Edit the `K` array in `Scene.tsx` to change the keyframes for hero, side, wheel, rear, interior, reveal and drive-away.
+### Camera path
+
+Edit the `K` array in `components/Scene.tsx` to change the keyframes for hero, side, wheel, rear, interior, reveal and drive-away.
 
 ## Performance and Accessibility
 
